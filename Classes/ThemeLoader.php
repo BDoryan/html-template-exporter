@@ -38,12 +38,12 @@ class ThemeLoader
 
         $blocks = [];
         foreach ($body->childNodes as $index => $node) {
-            if (in_array($node->nodeValue, $nodeIgnored))
-                continue;
-
             if ($node->nodeType === XML_COMMENT_NODE) {
                 $comment = $node->nodeValue;
                 $comment = trim($comment);
+
+                if (in_array($comment, $nodeIgnored))
+                    continue;
 
                 $blocks_finds = [];
 
